@@ -2,12 +2,17 @@ import { changeScreen, SCREENS } from "./screens.js";
 import { loadImage, select, shuffleArray } from "./utils.js";
 
 const startBtn = select('#start-btn');
+const kubi = select('#kubi')
 const canvas = select('canvas');
 
 startBtn.addEventListener('click', () => {
   changeScreen(SCREENS.game);
   randomizeDice()
 })
+
+kubi.addEventListener("animationend", (event) => {
+  kubi.classList.add('swing')
+});
 
 async function randomizeDice() {
   const width = canvas.clientWidth
@@ -24,7 +29,7 @@ async function randomizeDice() {
   const diceMarginWidth = 12 // TODO - use above calculation
 
   // const imgDie = await loadImage('res/d1.png')
-  const imgDie = await loadImage('res/gold.png')
+  const imgDie = await loadImage('res/die.png')
   const imgKubi = await loadImage('res/afarsekubi.png')
 
   const ctx = canvas.getContext('2d');
@@ -47,18 +52,23 @@ async function randomizeDice() {
   shuffleArray(dice);
 
   // Add afersekubi
-  const kubiPos = Math.floor(Math.random() * dice.length)
+  const kubiPos = Math.floor(Math.random() * Math.floor(dice.length * 0.75))
   dice[kubiPos].isKubi = true
 
   // draw
   dice.forEach((die, i) => {
     const img = die.isKubi ? imgKubi : imgDie
+    
     ctx.save();
-    if (!die.isKubi) {
-      ctx.filter = `hue-rotate(${die.color})`
-    }
     ctx.translate(die.x, die.y)
     ctx.rotate(die.r / 180 * Math.PI);
+
+    if (!die.isKubi) {
+      ctx.filter = ` invert(100%) contrast(80%) brightness(1.7) hue-rotate(${die.color})`
+    } else {
+      ctx.scale(1.2,1.2)
+    }
+
     ctx.drawImage(img, -dieSize / 2, -dieSize / 2, dieSize, dieSize);
     ctx.restore()
   })

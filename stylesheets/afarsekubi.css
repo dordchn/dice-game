@@ -1,10 +1,16 @@
-#afarsekubi {
+#kubi {
   width: 90%;
   margin-top: 8px;
   /* -webkit-animation-name: bounce;  */
   animation-name: bounce;
   animation-duration: 1.5s;
+}
 
+#kubi.swing {
+  animation-name: swing;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-timing-function: linear;
 }
 
 @keyframes bounce {
@@ -24,5 +30,20 @@
     opacity: 1;
     transform: translateY(0);
     animation-timing-function: ease-out;
+  }
+}
+
+@keyframes swing {
+  0%, 50%, 100% {
+    transform: rotate(0deg);
+    
+  }
+
+  25% {
+    transform: rotate(10deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
   }
 }
