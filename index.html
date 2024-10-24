@@ -18,12 +18,15 @@
     <p class="description">אפרסקובי הלך לאיבוד בבריכת קוביות, עזרו לנו למצוא אותו וזכו בתהילת עולם!</p>
     <img id="kubi" src="./res/afarsekubi.png" />
     <div>
-      <div id="start-btn">התחל משחק</div>
+      <div id="start-btn" class="button">התחל משחק</div>
     </div>
   </div>
 
-  <div class="screen" id="screen-game">
+  <div class="screen screen-hidden" id="screen-game">
     <canvas></canvas>
+    <div>
+      <div id="back-btn" class="button">חזרה לתפריט</div>
+    </div>
   </div>
 
   <script type="module" src="src/index.js"></script>

@@ -2,12 +2,17 @@ import { changeScreen, SCREENS } from "./screens.js";
 import { loadImage, select, shuffleArray } from "./utils.js";
 
 const startBtn = select('#start-btn');
+const backBtn = select('#back-btn');
 const kubi = select('#kubi')
 const canvas = select('canvas');
 
 startBtn.addEventListener('click', () => {
   changeScreen(SCREENS.game);
   randomizeDice()
+});
+
+backBtn.addEventListener('click', () => {
+  changeScreen(SCREENS.intro);
 })
 
 kubi.addEventListener("animationend", (event) => {
@@ -26,7 +31,8 @@ async function randomizeDice() {
 
   // const effectiveDiceWidth = Math.floor(width/diceDist) * diceDist
   // const diceMarginWidth = (width - effectiveDiceWidth) / 2
-  const diceMarginWidth = 12 // TODO - use above calculation
+  const diceMarginWidth = 5 // TODO - use above calculation
+  const diceMarginHeight = 20 // TODO - use above calculation
 
   // const imgDie = await loadImage('res/d1.png')
   const imgDie = await loadImage('res/die.png')
@@ -40,7 +46,7 @@ async function randomizeDice() {
     for (let y = dieSize / 2; y < height - dieSize / 2; y += diceDist) {
       const dieParams = {
         x: x + diceMarginWidth + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
-        y: y + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
+        y: y + diceMarginHeight + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
         r: Math.floor(Math.random() * 360),
         color: Math.floor(Math.random() * 360) + 'deg',
       }
@@ -56,6 +62,7 @@ async function randomizeDice() {
   dice[kubiPos].isKubi = true
 
   // draw
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
   dice.forEach((die, i) => {
     const img = die.isKubi ? imgKubi : imgDie
     
