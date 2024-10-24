@@ -2,20 +2,25 @@ import { shuffleArray } from "./utils.js";
 
 export function generateDice(dieSize, width, height) {
   const maxRandomOffset = dieSize * 0.1
-  const diceDist = Math.floor(dieSize * 0.6)
+  const diceDist = Math.ceil(dieSize * 0.6)
 
-  // const effectiveDiceWidth = Math.floor(width/diceDist) * diceDist
-  // const diceMarginWidth = (width - effectiveDiceWidth) / 2
-  const diceMarginWidth = 5 // TODO - use above calculation
-  const diceMarginHeight = 20 // TODO - use above calculation
+  // console.log(width / diceDist)
+  const boardSize = {
+    cols: Math.floor((width - dieSize) / diceDist) + 1,
+    rows: Math.floor((height - dieSize) / diceDist) + 1,
+  }
+  const diceMarginWidth = (width - (boardSize.cols - 1) * diceDist) / 2;
+  const diceMarginHeight = (height - (boardSize.rows - 1) * diceDist) / 2
 
   // Generate random dice
   const dice = []
-  for (let x = dieSize / 2; x < width - dieSize / 2; x += diceDist) {
-    for (let y = dieSize / 2; y < height - dieSize / 2; y += diceDist) {
+  for (let col = 0; col < boardSize.cols; col++) {
+    for (let row = 0; row < boardSize.rows; row++) {
+      const x = col * diceDist + diceMarginWidth
+      const y = row * diceDist + diceMarginHeight
       const dieParams = {
-        x: x + diceMarginWidth + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
-        y: y + diceMarginHeight + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
+        x: x + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
+        y: y + Math.floor(Math.random() * maxRandomOffset * 2 - maxRandomOffset),
         r: Math.floor(Math.random() * 360),
         color: Math.floor(Math.random() * 360) + 'deg',
       }
@@ -27,8 +32,13 @@ export function generateDice(dieSize, width, height) {
   shuffleArray(dice);
 
   // Add afersekubi
-  const kubiPos = Math.floor(Math.random() * Math.floor(dice.length * 0.75))
-  dice[kubiPos].isKubi = true
+  const kubiIndex = Math.floor(Math.random() * Math.floor(dice.length * 0.75))
+  dice[kubiIndex].isKubi = true
 
-  return dice
+  return {
+    dice, kubiPos: {
+      x: dice[kubiIndex].x,
+      y: dice[kubiIndex].y
+    }
+  }
 }

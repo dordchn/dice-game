@@ -26,6 +26,6 @@ export async function renderDice(canvas, dice, dieSize) {
     }
 
     ctx.drawImage(img, -dieSize / 2, -dieSize / 2, dieSize, dieSize);
-    ctx.restore()
+    ctx.restore();
   })
 }

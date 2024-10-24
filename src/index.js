@@ -21,11 +21,27 @@ kubi.addEventListener("animationend", (event) => {
   kubi.classList.add('swing')
 });
 
+/************ Game (todo: arrange code) ************/
+
+let kubiPos
+let level = 0
+let dieSize = 150
+canvas.addEventListener('click', evt => {
+  if (!kubiPos) { return }
+  const d = Math.hypot(evt.offsetX - kubiPos.x, evt.offsetY - kubiPos.y);
+  if (d < dieSize / 2) {
+    level++;
+    dieSize *= 0.9;
+    randomizeDice()
+  }
+})
+
 async function randomizeDice() {
   canvas.width = canvas.clientWidth
   canvas.height = canvas.clientHeight
-  const dieSize = 100;
 
-  const dice = generateDice(dieSize, canvas.width, canvas.height)
-  renderDice(canvas, dice, dieSize)
+  const { dice, kubiPos: generateKubiPos } = generateDice(dieSize, canvas.width, canvas.height)
+  console.log(dice)
+  kubiPos = generateKubiPos
+  await renderDice(canvas, dice, dieSize)
 }
