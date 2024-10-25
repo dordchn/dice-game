@@ -1,0 +1,68 @@
+
+#screen-game {
+  position: relative;
+  --canvas-border: 8px;
+}
+
+canvas {
+  width: 100%;
+  height: calc(100% - 100px);
+  background-color: #ffbca8;
+  border: var(--canvas-border) solid #00000014;
+  border-radius: 58px;
+  box-sizing: border-box;
+}
+#back-btn {
+  margin-top: 16px;
+}
+
+.found-popup {
+  display: none;
+  position: absolute;
+  top: 500px;
+  left: 300px;
+
+  --popup-width: 90px;
+  width: var(--popup-width);
+  line-height: 50px;
+  margin-top: calc(var(--canvas-border) - 50px - 12px);
+  margin-left: calc(var(--canvas-border) - var(--popup-width) / 2);
+
+  font-size: 18px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.found-popup:after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border: 1px solid black;
+  border-top-width: 0;
+  border-left-width: 0;
+
+  position: absolute;
+  bottom: -1px;
+  left: calc(50% - 14px * 0.7);
+  transform: rotate(45deg);
+  transform-origin: bottom left;
+}
+.found-popup.pop {
+  display: inline-block;
+  animation-name: popup;
+  animation-duration: 1s;
+}
+
+@keyframes popup {
+  0%, 100% {
+    transform: scale(0.1, 0.1);
+    opacity: 0;
+  }
+
+  10%, 90% {
+    transform: scale(1, 1);
+    opacity: 1;
+  }
+}

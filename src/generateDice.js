@@ -2,7 +2,7 @@ import { shuffleArray } from "./utils.js";
 
 export function generateDice(dieSize, width, height) {
   const maxRandomOffset = dieSize * 0.1
-  const diceDist = Math.ceil(dieSize * 0.6)
+  const diceDist = Math.ceil(dieSize * 0.63)
 
   // console.log(width / diceDist)
   const boardSize = {
