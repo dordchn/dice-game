@@ -4,17 +4,36 @@
   --canvas-border: 8px;
 }
 
+#game-header {
+  /* text-align: right; */
+  font-size: 28px;
+  font-weight: bold;
+  padding: 4px 8px;
+  margin-bottom: 8px;
+}
+
+#game-time {
+  float: left;
+}
+
+#game-container {
+  position: relative;
+}
+
 canvas {
   width: 100%;
-  height: calc(100% - 100px);
-  background-color: #ffbca8;
-  border: var(--canvas-border) solid #00000014;
+  height: calc(100% - 80px - 80px);
+  background-color: #333;
+  border: var(--canvas-border) solid #0006;
   border-radius: 58px;
   box-sizing: border-box;
 }
+
 #back-btn {
   margin-top: 16px;
 }
+
+/************ Found popup ************/
 
 .found-popup {
   display: none;

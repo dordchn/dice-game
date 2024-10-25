@@ -12,7 +12,7 @@ const kubi = select('#kubi')
 const canvas = select('canvas');
 const foundPopup = select('.found-popup');
 
-let level, dieSize, kubiPos
+let level, dieSize, kubiPos, isLevelTransition
 
 window.addEventListener('load', async () => {
   loadAssets()
@@ -26,7 +26,7 @@ function setupIntro() {
     changeScreen(SCREENS.game);
     level = 1;
     dieSize = INITIAL_DIE_SIZE;
-    randomizeDice()
+    startLevel()
   });
 
   kubi.addEventListener("animationend", (event) => {
@@ -43,13 +43,15 @@ function setupGame() {
     'הנה אני', 'רק עוד קצת', 'הו בוי'
   ]
   backBtn.addEventListener('click', () => {
+    if (isLevelTransition) { return }
     changeScreen(SCREENS.intro);
   })
 
   canvas.addEventListener('click', async evt => {
-    if (!kubiPos) { return }
+    if (!kubiPos || isLevelTransition) { return }
     const d = Math.hypot(evt.offsetX - kubiPos.x, evt.offsetY - kubiPos.y);
     if (d < dieSize / 2) {
+      isLevelTransition = true
       if (level == 15) {
         alert("You've completed the game!")
         changeScreen(SCREENS.intro);
@@ -64,16 +66,19 @@ function setupGame() {
         // level up
         level++;
         dieSize *= 0.9;
-        randomizeDice()
+        startLevel()
       }
+      isLevelTransition = false
     }
   })
 }
 
-function randomizeDice() {
+function startLevel() {
   canvas.width = canvas.clientWidth
   canvas.height = canvas.clientHeight
+
   const { dice, kubiPos: generateKubiPos } = generateDice(dieSize, canvas.width, canvas.height)
   kubiPos = generateKubiPos
   renderDice(canvas, dice, dieSize)
+  select('#game-level').textContent = 'שלב ' + level.toString()
 }
