@@ -1,19 +1,11 @@
-import { loadImage } from "./utils.js";
+import { assets } from "./assets.js";
 
-const assets = {
-  die: loadImage('res/die.png'),
-  kubi: loadImage('res/afarsekubi.png')
-}
-
-export async function renderDice(canvas, dice, dieSize) {
-  const imgDie = await assets.die
-  const imgKubi = await assets.kubi
-
+export function renderDice(canvas, dice, dieSize) {
   const ctx = canvas.getContext('2d');
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   dice.forEach((die, i) => {
-    const img = die.isKubi ? imgKubi : imgDie
+    const img = die.isKubi ? assets['kubi'] : assets['die']
 
     ctx.save();
     ctx.translate(die.x, die.y)
