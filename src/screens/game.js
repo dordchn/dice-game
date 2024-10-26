@@ -23,10 +23,12 @@ const LEVEL_WIN_MSG = [
 ];
 
 let level, dieSize, kubiPos, isLevelTransition;
+let startTime, timer;
 
 const backBtn = select("#back-btn");
 const canvas = select("canvas");
 const foundPopup = select(".found-popup");
+const timeEl = select("#game-time");
 
 export function setupGame() {
   backBtn.addEventListener("click", () => {
@@ -70,6 +72,22 @@ export function resetGame() {
 
   level = 1;
   dieSize = INITIAL_DIE_SIZE;
+  startTime = Date.now();
+  if (timer) {
+    clearInterval(timer);
+  }
+  timeEl.textContent = "00:00";
+  setInterval(() => {
+    const dt = (Date.now() - startTime) / 1e3;
+    const min = Math.floor(dt / 60)
+      .toString()
+      .padStart(2, "0");
+    const sec = Math.floor(dt % 60)
+      .toString()
+      .padStart(2, "0");
+    timeEl.textContent = min + ":" + sec;
+  }, 1000);
+
   startLevel();
 }
 
