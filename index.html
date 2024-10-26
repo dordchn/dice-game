@@ -1,59 +1,67 @@
-<html dir=rtl>
+<html dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dor D. Cohen" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="utf-8">
-  <meta name="author" content="Dor D. Cohen">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>איפה אפרסקובי?</title>
+    <link rel="icon" href="favicon.ico" />
 
-  <title>איפה אפרסקובי?</title>
-  <link rel="icon" href="favicon.ico">
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800"
+      rel="stylesheet"
+    />
 
-  <!-- fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800" rel="stylesheet">
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="./stylesheets/style.css" />
 
-  <!-- stylesheets -->
-  <link rel="stylesheet" href="./stylesheets/style.css">
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-3J5WRW30QG"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3J5WRW30QG"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+      gtag("config", "G-3J5WRW30QG");
+    </script>
+  </head>
 
-    gtag('config', 'G-3J5WRW30QG');
-  </script>
-</head>
-
-<body>
-  <!-- Intro screen -->
-  <div class="screen" id="screen-intro">
-    <h1>איפה אפרסקובי?</h1>
-    <p class="description">אפרסקובי הלך לאיבוד בבריכת קוביות, עזרו לנו למצוא אותו וזכו בתהילת עולם!</p>
-    <img id="kubi" src="./res/afarsekubi.png" />
-    <div>
-      <div id="start-btn" class="button">התחל משחק</div>
+  <body>
+    <!-- Intro screen -->
+    <div class="screen" id="screen-intro">
+      <h1>איפה אפרסקובי?</h1>
+      <p class="description">
+        אפרסקובי הלך לאיבוד בבריכת קוביות, עזרו לנו למצוא אותו וזכו בתהילת עולם!
+      </p>
+      <img id="kubi" src="./res/afarsekubi.png" />
+      <div>
+        <div id="start-btn" class="button">התחל משחק</div>
+      </div>
     </div>
-  </div>
 
-  <!-- Game screen -->
-  <div class="screen screen-hidden" id="screen-game">
-    <div id="game-header">
-      <span id="game-level">שלב 1</span>
-      <!-- <span id="game-time">0:0</span> -->
+    <!-- Game screen -->
+    <div class="screen screen-hidden" id="screen-game">
+      <div id="game-header">
+        <span id="game-level">שלב 1</span>
+        <!-- <span id="game-time">0:0</span> -->
+      </div>
+      <div id="game-container">
+        <canvas></canvas>
+        <div class="found-popup"></div>
+      </div>
+      <div>
+        <div id="back-btn" class="button">חזרה לתפריט</div>
+      </div>
     </div>
-    <div id="game-container">
-      <canvas></canvas>
-      <div class="found-popup"></div>
-    </div>
-    <div>
-      <div id="back-btn" class="button">חזרה לתפריט</div>
-    </div>
-  </div>
 
-  <script type="module" src="src/index.js"></script>
-</body>
-
+    <script type="module" src="src/index.js"></script>
+  </body>
 </html>

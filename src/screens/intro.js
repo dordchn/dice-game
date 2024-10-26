@@ -2,15 +2,15 @@ import { resetGame } from "./game.js";
 import { changeScreen, SCREENS } from "../screens.js";
 import { select } from "../utils.js";
 
-const startBtn = select('#start-btn');
+const startBtn = select("#start-btn");
 
 export function setupIntro() {
-  startBtn.addEventListener('click', () => {
+  startBtn.addEventListener("click", () => {
     changeScreen(SCREENS.game);
-    resetGame()
+    resetGame();
   });
 
   kubi.addEventListener("animationend", () => {
-    kubi.classList.add('swing')
+    kubi.classList.add("swing");
   });
 }
