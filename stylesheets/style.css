@@ -41,9 +41,13 @@ h1 {
 
 #sound-btn {
   position: absolute;
-  left: 8px;
-  bottom: 8px;
+  left: 16px;
+  bottom: 16px;
   cursor: pointer;
+  padding: 6px;
+  background: white;
+  border: 1px solid #666;
+  border-radius: 50%;
 }
 #sound-btn img {
   height: 24px;
