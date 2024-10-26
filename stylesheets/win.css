@@ -1,0 +1,55 @@
+
+#win-kubi-container {
+  position: relative;
+}
+
+#win-kubi {
+  width: 80%;
+  max-width: 400px;
+  margin-top: 22px;
+}
+
+.win-result {
+  font-size: 32px;
+}
+
+#win-back-btn {
+  margin-top: 48px;
+}
+
+/************ Speech bubble ************/
+
+.win-bubble {
+  --popup-width: 90px;
+  
+  position: absolute;
+  top: 20px;
+  left: calc(50% - var(--popup-width) / 2 - 80px);
+
+  width: var(--popup-width);
+  line-height: 50px;
+  margin-top: calc(var(--canvas-border) - 50px - 12px);
+  margin-left: calc(var(--canvas-border) - var(--popup-width) / 2);
+
+  font-size: 18px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 8px;
+}
+.win-bubble:after {
+  content: '';
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: white;
+  border: 1px solid black;
+  border-top-width: 0;
+  border-left-width: 0;
+
+  position: absolute;
+  bottom: -1px;
+  right: 20px;
+  
+  transform: rotate(45deg);
+  transform-origin: bottom left;
+}

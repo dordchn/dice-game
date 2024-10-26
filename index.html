@@ -41,7 +41,7 @@
       <p class="description">
         אפרסקובי הלך לאיבוד בבריכת קוביות, עזרו לנו למצוא אותו וזכו בתהילת עולם!
       </p>
-      <img id="kubi" src="./res/afarsekubi.png" />
+      <img id="intro-kubi" src="./res/afarsekubi.png" />
       <div>
         <div id="start-btn" class="button">התחל משחק</div>
       </div>
@@ -58,7 +58,21 @@
         <div class="found-popup"></div>
       </div>
       <div>
-        <div id="back-btn" class="button">חזרה לתפריט</div>
+        <div id="game-back-btn" class="button">חזרה לתפריט</div>
+      </div>
+    </div>
+
+    <!-- Game screen -->
+    <div class="screen screen-hidden" id="screen-win">
+      <h1>מצאת את אפרסקובי!</h1>
+      <p class="description">כל הכבוד! בזכותך אפרסקובי בטוח שוב.</p>
+      <div id="win-kubi-container">
+        <div class="win-bubble">תודה!</div>
+        <img id="win-kubi" src="./res/afarsekubi.png" />
+      </div>
+      <p class="win-result">זמן כולל: <span id="win-time"></span></p>
+      <div>
+        <div id="win-back-btn" class="button">חזרה לתפריט</div>
       </div>
     </div>
 

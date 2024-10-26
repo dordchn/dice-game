@@ -3,6 +3,7 @@ import { select } from "./utils.js";
 export const SCREENS = {
   intro: select("#screen-intro"),
   game: select("#screen-game"),
+  win: select("#screen-win"),
 };
 
 export function changeScreen(screen) {

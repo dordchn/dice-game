@@ -1,5 +1,6 @@
-@import url("afarsekubi.css");
+@import url("intro.css");
 @import url("game.css");
+@import url("win.css");
 
 body {
   font-family: "Open Sans", serif;
@@ -34,8 +35,4 @@ h1 {
   color: #2f722f;
   padding: 8px 32px;
   cursor: pointer;
-}
-
-#start-btn {
-  margin-top: 48px;
 }

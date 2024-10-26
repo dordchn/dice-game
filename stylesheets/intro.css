@@ -1,4 +1,9 @@
-#kubi {
+
+#start-btn {
+  margin-top: 48px;
+}
+
+#intro-kubi {
   width: 90%;
   max-width: 600px;
   margin-top: 8px;
@@ -7,7 +12,7 @@
   animation-duration: 1.5s;
 }
 
-#kubi.swing {
+#intro-kubi.swing {
   animation-name: swing;
   animation-iteration-count: infinite;
   animation-duration: 3s;
