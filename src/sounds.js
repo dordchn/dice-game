@@ -7,6 +7,14 @@ class Sounds {
     this.bgMain.loop = true;
     
     this.audios = {};
+
+    window.addEventListener('blur', () => {
+      this.getAllAudios().forEach(audio => audio.muted = true);
+    })
+    
+    window.addEventListener('focus', () => {
+      this.getAllAudios().forEach(audio => audio.muted = this.muted);
+    })
   }
 
   playBackground() {

@@ -18,7 +18,6 @@ function setupSound() {
   let muted = false;
   select("#sound-btn").addEventListener("click", () => {
     muted = !muted;
-    console.log(muted)
     muted ? sounds.mute() : sounds.unmute();
     select("#sound-on-icon").style.display = muted ? "none" : "";
     select("#sound-off-icon").style.display = muted ? "" : "none";
