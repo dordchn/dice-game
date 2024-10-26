@@ -36,3 +36,15 @@ h1 {
   padding: 8px 32px;
   cursor: pointer;
 }
+
+/** Sound */
+
+#sound-btn {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  cursor: pointer;
+}
+#sound-btn img {
+  height: 24px;
+}
