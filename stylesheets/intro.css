@@ -53,3 +53,14 @@
     transform: rotate(-10deg);
   }
 }
+
+#intro-social {
+  position: absolute;
+  bottom: 16px;
+  right:16px;
+}
+
+#intro-social img {
+  width: 34px;
+  margin-left: 4px;
+}
